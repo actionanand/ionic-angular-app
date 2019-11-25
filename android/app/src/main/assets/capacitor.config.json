@@ -1,0 +1,8 @@
+{
+  "appId": "com.actionanand.recipe",
+  "appName": "recipe-leaves-simple",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {}
+}
