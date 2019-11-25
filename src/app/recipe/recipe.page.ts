@@ -13,8 +13,10 @@ export class RecipePage implements OnInit {
   recipes: Recipe[];
   constructor(private recipeServ: RecipeService) { }
 
-  ngOnInit() {
-    this.recipes = this.recipeServ.getAllRecipe();
+  ngOnInit() { }
+
+  ionViewWillEnter() {
+    this.recipes = this.recipeServ.getAllRecipe()
   }
 
 }
