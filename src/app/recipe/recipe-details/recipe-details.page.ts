@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { Recipe } from '../recipe.model';
+import { RecipeService } from 'src/app/service/recipe.service';
 
 @Component({
   selector: 'app-recipe-details',
@@ -7,9 +11,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecipeDetailsPage implements OnInit {
 
-  constructor() { }
+  loadedRecipe: Recipe;
+
+  constructor(private route: ActivatedRoute, private recipeServ: RecipeService) { }
 
   ngOnInit() {
+    this.route.paramMap.subscribe(paramMap => {
+      if(!paramMap.has('recipeId')) {
+        
+        return;
+      }
+      const recipeId = paramMap.get('recipeId');
+      this.loadedRecipe = this.recipeServ.getSingleRecipe(recipeId);
+    });
   }
 
 }
