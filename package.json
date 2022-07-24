@@ -2,14 +2,18 @@
   "name": "ionic-angular-app",
   "version": "0.0.1",
   "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "homepage": "http://actionanand.github.io/ionic-angular-app",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build:github": "ng build --output-path dist --base-href /ionic-angular-app/",
+    "copy404": "cat './dist/index.html' >> './dist/404.html'",
+    "predeploy": "npm run build:github && npm run copy404",
+    "deploy": "gh-pages -d dist"
   },
   "private": true,
   "dependencies": {
@@ -45,6 +49,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
+    "gh-pages": "^4.0.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
